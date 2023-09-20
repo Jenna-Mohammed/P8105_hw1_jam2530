@@ -19,14 +19,27 @@ data("early_january_weather")
 # Problem 1
 
 ```{r}
-mean()
+# Calculating information about table
+
+early_january_weather
+nrow(early_january_weather)
+ncol(early_january_weather)
 ```
 
 
-There are 358 rows, where the information is collected every hour from hour 1 to hour 23. 
+```{r}
+# Calculating mean of temperature
+
+mean(pull(early_january_weather, temp))
+```
+
+
+The table shows that there are 358 rows and 15 columns.The information is repeatedly collected every hour from hour 1 to hour 23. The mean of the temperature is 39.58212
 
 
 ```{r}
+# Creating scatterplot for time_hour vs temperature
+
 plot_df = tibble(
     x = "time_hour",
     y = "temp"
@@ -37,10 +50,12 @@ ggplot(early_january_weather, aes(x = time_hour , y = temp , color = humid )) + 
                                                                               
 ```
 
-
+The plot shown expressed the relationship between time_hour and temperature, with time_hour represented on the x axis and temperature represented on the y axis. The graph shows a moderately strong positive relationship. There are no apparent outliers, but around January 12th/13th the data strayes from the pattern.
 
 
 # Problem 2
 
-I can take the mean of the sample, too!
-The mean is `r mean(samp)`.
+```{r}
+samp = rnorm(10)
+```
+
