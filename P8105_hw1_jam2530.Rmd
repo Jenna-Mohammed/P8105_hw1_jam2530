@@ -1,18 +1,22 @@
 ---
 title: "P8105_hw1_jam2530"
-date: September 19 2023
+date: September 21 2023
 name: "Jenna Mohammed"
-output: html_document
+output: github_document
+    toc: true
+    toc_float: true
+    code_folding: hide
 ---
 
-```{r}
+```{r warning=FALSE}
 library(moderndive)
 library(tidyverse)
 ```
 
 
-```{r}
+```{r warning=FALSE}
 data("early_january_weather")
+
 ```
 
 
@@ -34,7 +38,7 @@ mean(pull(early_january_weather, temp))
 ```
 
 
-The table shows that there are 358 rows and 15 columns.The information is repeatedly collected every hour from hour 1 to hour 23. The mean of the temperature is 39.58212
+Table Description: The table shows that there are 358 rows and 15 columns. The information is repeatedly collected every hour from hour 1 to hour 23. The mean of the temperature is 39.58212
 
 
 ```{r}
@@ -47,15 +51,42 @@ plot_df = tibble(
 )
 
 ggplot(early_january_weather, aes(x = time_hour , y = temp , color = humid )) + geom_point()
-                                                                              
+      
+ggsave("P8105_hw1_jam2530.pdf")                                                                        
 ```
 
-The plot shown expressed the relationship between time_hour and temperature, with time_hour represented on the x axis and temperature represented on the y axis. The graph shows a moderately strong positive relationship. There are no apparent outliers, but around January 12th/13th the data strayes from the pattern.
+Plot Description: The plot shown expressed the relationship between time_hour and temperature, with time_hour represented on the x axis and temperature represented on the y axis. The graph shows a moderately strong positive relationship. There are no apparent outliers, but around January 12th/13th the data strayes from the pattern.
 
 
 # Problem 2
 
 ```{r}
-samp = rnorm(10)
+Homework_df = tibble(
+        samp = rnorm(10),
+        vec_logical = samp > 0,
+        vec_char = c("1", "2", "3", "4" , "5" , "6" , "7", "8" , "9" , "10"),
+        vec_factor = c("LOW", "MED", "HIGH", "LOW", "LOW", "MED", "HIGH", "LOW", "MED", "HIGH"),
+    )
+
 ```
 
+```{r}
+# taking the mean of each variable
+
+mean(Homework_df[["samp"]])
+mean(Homework_df[["vec_logical"]])
+mean(Homework_df[["vec_char"]])
+mean(Homework_df[["vec_factor"]])
+
+```
+
+Converting variables from one type to another
+
+```{r}
+as.numeric(Homework_df[["vec_logical"]])
+as.numeric(Homework_df[["vec_char"]])
+as.numeric(Homework_df[["vec_factor"]])
+```
+
+
+Mean/as.numeric description: When taking the as.numeric of "vec_factor", an error occurs. There is an error when trying to compute the mean for it as well since it is categorized as "low", "med", and "high". This cannot be converted into numerical values and therefore cannot give you a mean.
