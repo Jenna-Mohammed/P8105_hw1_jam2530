@@ -1,11 +1,8 @@
 ---
 title: "P8105_hw1_jam2530"
-date: September 21 2023
-name: "Jenna Mohammed"
+date: September 23 2023
+author: Jenna Mohammed
 output: github_document
-    toc: true
-    toc_float: true
-    code_folding: hide
 ---
 
 ```{r warning=FALSE}
@@ -38,7 +35,7 @@ mean(pull(early_january_weather, temp))
 ```
 
 
-Table Description: The table shows that there are 358 rows and 15 columns. The information is repeatedly collected every hour from hour 1 to hour 23. The mean of the temperature is 39.58212
+Table Description: The table shows that there are 358 rows and 15 columns. Important variables in this dataset are hour, temperature, dewpoint, humidity,wind direction, wind speed, and pressure. The information is repeatedly collected every hour from hour 1 to hour 23. The mean of the temperature is 39.58212
 
 
 ```{r}
@@ -60,6 +57,8 @@ Plot Description: The plot shown expressed the relationship between time_hour an
 
 # Problem 2
 
+This code chunk shows the creation of a data frame. 
+
 ```{r}
 Homework_df = tibble(
         samp = rnorm(10),
@@ -70,6 +69,7 @@ Homework_df = tibble(
 
 ```
 
+This code chunk will take the mean of each variable in the data frame.
 ```{r}
 # taking the mean of each variable
 
@@ -80,7 +80,7 @@ mean(Homework_df[["vec_factor"]])
 
 ```
 
-Converting variables from one type to another
+This code chunk will convert variables from one type to another.
 
 ```{r}
 as.numeric(Homework_df[["vec_logical"]])
